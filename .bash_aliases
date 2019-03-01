@@ -37,13 +37,13 @@ alias ducks='du -cks * | sort -rn | head'
 # Quick edit files
 # =====================================================================
 
-alias edit_aliases="$EDITOR $HOME/.bash_aliases"
+alias edit_aliases="$EDITOR ~/.bash_aliases"
 alias edit_hosts='sudo $EDITOR /etc/hosts'
-alias edit_bashrc="$EDITOR $HOME/.bashrc"
-alias edit_emacs="$EDITOR $HOME/.emacs.d/sod.org"
-alias edit_i3="$EDITOR $HOME/.i3/config"
-alias edit_irc="$EDITOR $HOME/.emacs.d/erc-config.org"
-alias edit_lxc="$EDITOR $HOME/lxc/default.conf"
+alias edit_bashrc="$EDITOR ~/.bashrc"
+alias edit_emacs="$EDITOR ~/.emacs.d/sod.org"
+alias edit_i3="$EDITOR ~/.config/i3/config"
+alias edit_irc="$EDITOR ~/.emacs.d/erc-config.org"
+alias edit_lxc="$EDITOR ~/lxc/default.conf"
 
 # GIT
 # =====================================================================
