@@ -64,6 +64,9 @@ source /usr/lib/python3.6/site-packages/powerline/bindings/bash/powerline.sh
 # github path
 export DEVPATH="$HOME/code/src/github.com/techquila"
 
+# dotfiles path
+export DOTPATH="$DEVPATH/dotfiles"
+
 # golang
 export GOPATH="$HOME/go"
 export PATH=$PATH:$GOPATH
