@@ -40,18 +40,13 @@ ssh-add -l | grep "The agent has no identities" && ssh-add
 
 export PATH=$PATH:$HOME/bin
 
-if [ -f ~/.bash_aliases ]; then
-    source ~/.bash_aliases
-else
-    if [ -f ~/code/src/github.com/techquila/dotfiles/.bash_aliases ]; then
-	ln -s ~/code/src/github.com/techquila/dotfiles/.bash_aliases ~/.bash_aliases && source ~/.bash_aliases
-    fi
-fi
-
-
 # emacs as default. emacs is life.
 export EDITOR="emacs"
 export ORG_HOME="~/Dropbox/org"
+
+if [ -f ~/.bash_aliases ]; then
+    source ~/.bash_aliases
+fi
 
 # Powerline - (https://github.com/powerline/powerline)
 # (https://getsol.us/articles/software/powerline-shell-prompt/en/)
