@@ -42,6 +42,7 @@ alias edit_hosts='sudo $EDITOR /etc/hosts'
 alias edit_bashrc="$EDITOR ~/.bashrc"
 alias edit_emacs="$EDITOR ~/.emacs.d/sod.org"
 alias edit_i3="$EDITOR ~/.config/i3/config"
+alias edit_i3status="$EDITOR ~/.config/i3/i3status.conf"
 alias edit_irc="$EDITOR ~/.emacs.d/erc-config.org"
 alias edit_lxc="$EDITOR ~/lxc/default.conf"
 
