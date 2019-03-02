@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
+# begin ~/.bashrc
 
 # Shell Options
-# ==================================================
+# ========================================
 
 ## Correct basic typo's when changing directories
 shopt -q -s cdspell
@@ -13,14 +14,14 @@ shopt -q -s checkwinsize
 export MANPAGER="less -X"
 
 # GPG 
-# ==================================================
+# ========================================
 
 ## invoke gpg agent
 GPG_TTY=$(tty)
 export GPG_TTY
 
 # SSH 
-# ==================================================
+# ========================================
 
 ## add key to ssh-agent
 if [ ! -S ~/.ssh/ssh_auth_sock ]; then
@@ -28,7 +29,7 @@ if [ ! -S ~/.ssh/ssh_auth_sock ]; then
     ln -sf "$SSH_AUTH_SOCK" ~/.ssh/ssh_auth_sock
 fi
 
-export SSH_AUTH_SOCK=~/.ssh/ssh_auth_sock
+export SSH_AUTH_SOCK=$HOME/.ssh/ssh_auth_sock
 ssh-add -l | grep "The agent has no identities" && ssh-add
 
 ## Add tab completion for SSH hostnames based on ~/.ssh/config
@@ -36,33 +37,36 @@ ssh-add -l | grep "The agent has no identities" && ssh-add
 [ -e "$HOME/.ssh/config" ] && complete -o "default" -o "nospace" -W "$(grep "^Host" ~/.ssh/config | grep -v "[?*]" | cut -d " " -f2)" scp sftp ssh
 
 # Conveniences
-# ==================================================
-
-export PATH=$PATH:$HOME/bin
+# ========================================
 
 # emacs as default. emacs is life.
 export EDITOR="emacs"
-export ORG_HOME="~/Dropbox/org"
+export ORG_HOME="$HOME/Dropbox/org"
 
+# load alias' if exist
 if [ -f ~/.bash_aliases ]; then
     source ~/.bash_aliases
 fi
 
-# Powerline - (https://github.com/powerline/powerline)
-# (https://getsol.us/articles/software/powerline-shell-prompt/en/)
-# =====================================================================
-powerline-daemon -q
-POWERLINE_BASH_CONTINUATION=1
-POWERLINE_BASH_SELECT=1
-source /usr/lib/python3.6/site-packages/powerline/bindings/bash/powerline.sh
+# Paths
+# ========================================
 
-# github path
-export DEVPATH="$HOME/code/src/github.com/techquila"
+# where ya bin?
+export PATH=$PATH:$HOME/bin
 
-# dotfiles path
-export DOTPATH="$DEVPATH/dotfiles"
+# path to source directories
+export SRCDIR="$HOME/code/src"
 
-# golang
+# path to bitbucket
+export BITDIR="$SRCDIR/bitbucket.com/techquila"
+
+# path to github
+export GITDIR="$SRCDIR/github.com/techquila"
+
+# path to dotfiles
+export DOTDIR="$GITDIR/dotfiles"
+
+# path to golang
 export GOPATH="$HOME/go"
 export PATH=$PATH:$GOPATH
 
@@ -72,12 +76,23 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # python
-## Make sure my new python projects use python3
+## ensure new python projects use python3
 VIRTUALENVWRAPPER_PYTHON='/usr/bin/python3'
 
 ## Setup Virtualenvs home
-export WORKON_HOME=$HOME/.virtualenvs
-export PROJECT_HOME=$HOME/project
+export WORKON_HOME="$HOME/.virtualenvs"
+export PROJECT_HOME=$GITDIR
 
+# Use virtualenvwrapper
 source /usr/bin/virtualenvwrapper.sh
 
+# Powerline - (https://github.com/powerline/powerline)
+# (https://getsol.us/articles/software/powerline-shell-prompt/en/)
+# ========================================
+powerline-daemon -q
+POWERLINE_BASH_CONTINUATION=1
+POWERLINE_BASH_SELECT=1
+source /usr/lib/python3.6/site-packages/powerline/bindings/bash/powerline.sh
+
+
+# end ~/.bashrc

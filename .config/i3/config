@@ -189,20 +189,6 @@ mode "resize" {
 
 bindsym Mod4+r mode "resize"
 
-########## window assignment ##########
-assign [class="^Urxvt$"] → $ws1 
-assign [class="^Emacs$"] → $ws2
-assign [class="^File$"] → $ws3
-assign [class="^Settings$"] → $ws3
-assign [class="^Firefox$"] → $ws4
-assign [class="^Vlc$"] → $ws5
-assign [class="^Google-music-electron$"] → $ws6
-assign [class="^Darktable$"] → $ws7
-assign [class="^Inkscape$"] → $ws8
-assign [class="^Gimp$"] → $ws9
-assign [class="^Thunderbird$"] → $ws10
-assign [class="^Hexchat$"] → $ws10
-
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
@@ -213,17 +199,17 @@ bar {
             background #404552
 
             focused_workspace #3685e2 #3685e2 #fafafa
-            active_workspace #5294e2 #5294e2 #fafafa
-            inactive_workspace #404552 #404552 #fafafa
-            urgent_workspace #ff5757 #ff5757 #fafafa
+            active_workspace #00b7ff #00b7ff #fafafa
+            inactive_workspace #666666 #666666 #fafafa
+            urgent_workspace #ff8c00 #ff8c00 #fafafa
         }
 }
 
 ########## Styling ##########
 
-client.focused          #404552 #404552 #fafafa #ff5757 #fafafa
+client.focused          #888888 #404552 #fafafa #ff5757 #fafafa
 client.focused_inactive #666666 #404552 #eeeeee #666666 #666666
-client.unfocused        #404552 #484b52 #eeeeee #ff5757 #404552
+client.unfocused        #444444 #484b52 #eeeeee #ff5757 #404552
 client.urgent           #ff5757 #404552 #ffffff #555757 #404552
 client.background       #404552
 
@@ -239,7 +225,27 @@ smart_gaps on
 gaps inner 10
 gaps outer 0
 
+########## window assignment ##########
+assign [class="^Urxvt$"] → $ws1 
+assign [class="^Emacs$"] → $ws2
+assign [class="^Nautilus"] → $ws3
+assign [class="^Settings$"] → $ws3
+assign [class="^Firefox$"] → $ws4
+assign [class="^Vlc$"] → $ws5
+assign [class="^Google-music"] → $ws6
+assign [class="^Darktable$"] → $ws7
+assign [class="^Inkscape$"] → $ws8
+assign [class="^Gimp$"] → $ws9
+assign [class="^Thunderbird$"] → $ws10
+assign [class="^Hexchat$"] → $ws10
 
+########## auto launch ##########
+exec emacs
+exec nautilus
+exec ~/.nvm/versions/node/v10.15.2/bin/google-music-electron
+exec hexchat
+exec thunderbird
+exec firefox
 
 # Press $mod+o followed by either f, t, Escape or Return to launch firefox,
 # thunderbird or return to the defauLt Mode, respectively.
@@ -253,7 +259,7 @@ mode "$mode_launcher" {
     bindsym c exec hexchat
     bindsym g exec gimp
     bindsym i exec inkscape	
-    bindsym m exec --no-startup-id google-music-electron
+    bindsym m exec "~/bin/google-music-electron"
     bindsym t exec thunderbird
 
     bindsym Escape mode "default"
