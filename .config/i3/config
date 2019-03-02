@@ -7,6 +7,15 @@ set $down k
 set $left j
 set $right l
 
+# Reload the configuration file
+bindsym Mod4+Shift+c reload
+
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym Mod4+Shift+r restart
+
+# exit i3 (logs you out of your X session)
+bindsym Mod4+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
 font pango:Clear Sans 10
@@ -113,29 +122,29 @@ bindsym Mod4+minus scratchpad show
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
-set $ws1 "1"
-set $ws2 "2"
-set $ws3 "3"
-set $ws4 "4"
-set $ws5 "5"
-set $ws6 "6"
-set $ws7 "7"
-set $ws8 "8"
-set $ws9 "9"
-set $ws10 "10"
+set $ws1 "1: shell"
+set $ws2 "2: emacs"
+set $ws3 "3: files"
+set $ws4 "4: www"
+set $ws5 "5: settings"
+set $ws6 "6: music"
+set $ws7 "7: darktable"
+set $ws8 "8: inkscape"
+set $ws9 "9: gimp"
+set $ws10 "10: comms"
 
 
 # switch to workspace
 bindsym Mod4+1 workspace $ws1
-bindsym Mod4+2 workspace $ws2
+bindsym Mod4+2 workspace $ws2, layout stacking
 bindsym Mod4+3 workspace $ws3
-bindsym Mod4+4 workspace $ws4
+bindsym Mod4+4 workspace $ws4, layout stacking
 bindsym Mod4+5 workspace $ws5
 bindsym Mod4+6 workspace $ws6
 bindsym Mod4+7 workspace $ws7
 bindsym Mod4+8 workspace $ws8
 bindsym Mod4+9 workspace $ws9
-bindsym Mod4+0 workspace $ws10
+bindsym Mod4+0 workspace $ws10, layout stacking
 
 # move focused container to workspace
 bindsym Mod4+Shift+1 move container to workspace $ws1
@@ -152,15 +161,6 @@ bindsym Mod4+Shift+0 move container to workspace $ws10
 # move container
 bindsym Mod4+z move workspace to output left
 bindsym Mod4+x move workspace to output right
-
-# reload the configuration file
-bindsym Mod4+Shift+c reload
-
-# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
-bindsym Mod4+Shift+r restart
-
-# exit i3 (logs you out of your X session)
-bindsym Mod4+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -188,6 +188,20 @@ mode "resize" {
 }
 
 bindsym Mod4+r mode "resize"
+
+########## window assignment ##########
+assign [class="^Urxvt$"] → $ws1 
+assign [class="^Emacs$"] → $ws2
+assign [class="^File$"] → $ws3
+assign [class="^Settings$"] → $ws3
+assign [class="^Firefox$"] → $ws4
+assign [class="^Vlc$"] → $ws5
+assign [class="^Google-music-electron$"] → $ws6
+assign [class="^Darktable$"] → $ws7
+assign [class="^Inkscape$"] → $ws8
+assign [class="^Gimp$"] → $ws9
+assign [class="^Thunderbird$"] → $ws10
+assign [class="^Hexchat$"] → $ws10
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
@@ -225,6 +239,8 @@ smart_gaps on
 gaps inner 10
 gaps outer 0
 
+
+
 # Press $mod+o followed by either f, t, Escape or Return to launch firefox,
 # thunderbird or return to the defauLt Mode, respectively.
 set $mode_launcher Launch: [e]macs [f]irefox [g]imp [i]nkscape [m]usic [t]hunderbird 
@@ -236,7 +252,7 @@ mode "$mode_launcher" {
     bindsym f exec firefox
     bindsym g exec gimp
     bindsym i exec inkscape	
-    bindsym m exec "google-music-electron"
+    bindsym m exec --no-startup-id google-music-electron
     bindsym t exec thunderbird
 
     bindsym Escape mode "default"
