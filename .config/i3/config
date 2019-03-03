@@ -242,7 +242,7 @@ assign [class="^Hexchat$"] → $ws10
 ########## auto launch ##########
 exec emacs
 exec nautilus
-exec ~/.nvm/versions/node/v10.15.2/bin/google-music-electron
+exec $HOME/.nvm/versions/node/v10.15.2/bin/google-music-electron
 exec hexchat
 exec thunderbird
 exec firefox
@@ -259,7 +259,7 @@ mode "$mode_launcher" {
     bindsym c exec hexchat
     bindsym g exec gimp
     bindsym i exec inkscape	
-    bindsym m exec "~/bin/google-music-electron"
+    bindsym m exec $HOME/.nvm/versions/node/v10.15.2/bin/google-music-electron
     bindsym t exec thunderbird
 
     bindsym Escape mode "default"

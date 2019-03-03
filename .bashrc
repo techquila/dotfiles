@@ -16,7 +16,7 @@ export MANPAGER="less -X"
 # GPG 
 # ========================================
 
-## invoke gpg agent
+## export tty for gpg agent
 GPG_TTY=$(tty)
 export GPG_TTY
 
@@ -51,24 +51,26 @@ fi
 # Paths
 # ========================================
 
-# where ya bin?
-export PATH=$PATH:$HOME/bin
+# where your bin?
+if [ -s "$HOME/bin/" ]; then
+    export PATH=$PATH:$HOME/bin
+fi
 
 # path to source directories
-export SRCDIR="$HOME/code/src"
+export SRCPATH="$HOME/code/src"
 
 # path to bitbucket
-export BITDIR="$SRCDIR/bitbucket.com/techquila"
+export BITPATH="$SRCPATH/bitbucket.com/techquila"
 
 # path to github
-export GITDIR="$SRCDIR/github.com/techquila"
+export GITPATH="$SRCPATH/github.com/techquila"
 
 # path to dotfiles
-export DOTDIR="$GITDIR/dotfiles"
+export DOTPATH="$GITPATH/dotfiles"
 
 # path to golang
 export GOPATH="$HOME/go"
-export PATH=$PATH:$GOPATH
+export PATH=$PATH:$GOPATH:$GOPATH/bin
 
 # node version manager
 export NVM_DIR="$HOME/.nvm"
