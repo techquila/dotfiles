@@ -23,9 +23,10 @@ font pango:Clear Sans 10
 ########## Autolaunch ##########
 exec --no-startup-id nm-applet
 exec --no-startup-id /usr/lib64/polkit-gnome/polkit-gnome-authentication-agent-1
+exec --no-startup-id blueman-applet
 
 ########## Keybindings ##########
-bindsym Mod4+Shift+s exec i3lock # Easier locking
+bindsym Mod1+Control+l exec i3lock-fancy -gpf Roboto-Bold 
 
 ### Backlight ###
 # Note: If light doesn't work, install xbacklight and 1) uncomment the two lines below.
@@ -42,7 +43,7 @@ bindsym XF86AudioPrev exec playerctl previous
 bindsym XF86AudioNext exec playerctl next
 
 ### Other ###
-bindsym Print exec scrot -q 100
+bindsym Print exec scrot '%Y-%m-%d_$wx$h_scrot.png' -e 'mv $f ~/Pictures/Screens/'
 
 # Take a screenshot upon pressing $mod+x (select an area)
 bindsym --release mod4+x exec --no-startup-id import /tmp/latest-screenshot.png
@@ -126,11 +127,11 @@ set $ws1 "1: shell"
 set $ws2 "2: emacs"
 set $ws3 "3: files"
 set $ws4 "4: www"
-set $ws5 "5: settings"
+set $ws5 "5: watch"
 set $ws6 "6: music"
-set $ws7 "7: darktable"
-set $ws8 "8: inkscape"
-set $ws9 "9: gimp"
+set $ws7 "7: images"
+set $ws8 "8: graphics"
+set $ws9 "9: download"
 set $ws10 "10: comms"
 
 
@@ -226,7 +227,7 @@ gaps inner 10
 gaps outer 0
 
 ########## window assignment ##########
-assign [class="^Urxvt$"] → $ws1 
+assign [class="^Gnome-terminal$"] → $ws1 
 assign [class="^Emacs$"] → $ws2
 assign [class="^Nautilus"] → $ws3
 assign [class="^Settings$"] → $ws3
@@ -235,14 +236,16 @@ assign [class="^Vlc$"] → $ws5
 assign [class="^Google-music"] → $ws6
 assign [class="^Darktable$"] → $ws7
 assign [class="^Inkscape$"] → $ws8
-assign [class="^Gimp$"] → $ws9
+assign [class="^Gimp$"] → $ws8
+assign [class="^qbittorrent$"] → $ws9
 assign [class="^Thunderbird$"] → $ws10
 assign [class="^Hexchat$"] → $ws10
 
 ########## auto launch ##########
+exec --no-startup-id gnome-terminal
 exec emacs
 exec nautilus
-exec $HOME/.nvm/versions/node/v10.15.2/bin/google-music-electron
+exec $HOME/.nvm/versions/node/v10.15.2/bin/google-music-electron # investigate why no worky
 exec hexchat
 exec thunderbird
 exec firefox
@@ -259,7 +262,7 @@ mode "$mode_launcher" {
     bindsym c exec hexchat
     bindsym g exec gimp
     bindsym i exec inkscape	
-    bindsym m exec $HOME/.nvm/versions/node/v10.15.2/bin/google-music-electron
+    bindsym m exec $HOME/.nvm/versions/node/v10.15.2/bin/google-music-electron  # still no worky.. investigate
     bindsym t exec thunderbird
 
     bindsym Escape mode "default"
