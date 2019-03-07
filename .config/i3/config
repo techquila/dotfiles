@@ -43,7 +43,7 @@ bindsym XF86AudioPrev exec playerctl previous
 bindsym XF86AudioNext exec playerctl next
 
 ### Other ###
-bindsym Print exec scrot '%Y-%m-%d_$wx$h_scrot.png' -e 'mv $f ~/Pictures/Screens/'
+bindsym Print exec scrot '%Y-%m-%d-%s_$wx$h_scrot.png' -e 'mv $f ~/Pictures/Screens/'
 
 # Take a screenshot upon pressing $mod+x (select an area)
 bindsym --release mod4+x exec --no-startup-id import /tmp/latest-screenshot.png
@@ -233,11 +233,11 @@ assign [class="^Nautilus"] → $ws3
 assign [class="^Settings$"] → $ws3
 assign [class="^Firefox$"] → $ws4
 assign [class="^Vlc$"] → $ws5
-assign [class="^Google-music"] → $ws6
+assign [class="^Google-music$"] → $ws6
 assign [class="^Darktable$"] → $ws7
 assign [class="^Inkscape$"] → $ws8
 assign [class="^Gimp$"] → $ws8
-assign [class="^qbittorrent$"] → $ws9
+assign [class="^Qbittorrent$"] → $ws9
 assign [class="^Thunderbird$"] → $ws10
 assign [class="^Hexchat$"] → $ws10
 
@@ -262,7 +262,7 @@ mode "$mode_launcher" {
     bindsym c exec hexchat
     bindsym g exec gimp
     bindsym i exec inkscape	
-    bindsym m exec $HOME/.nvm/versions/node/v10.15.2/bin/google-music-electron  # still no worky.. investigate
+    bindsym m exec node $HOME/.nvm/versions/node/v10.15.2/bin/google-music-electron  # still no worky.. investigate
     bindsym t exec thunderbird
 
     bindsym Escape mode "default"
