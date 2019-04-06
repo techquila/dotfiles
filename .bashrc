@@ -40,8 +40,10 @@ ssh-add -l | grep "The agent has no identities" && ssh-add
 # ========================================
 
 # emacs as default. emacs is life.
-export EDITOR="emacs"
-export ORG_HOME="$HOME/Dropbox/org"
+export ALTERNATE_EDITOR=""
+export EDITOR="emacsclient -t"             # $EDITOR opens in terminal
+export VISUAL="emacsclient -c -a emacs"    # $VISUAL opens in GUI mode
+export ORG_HOME="$HOME/Dropbox/org"        # where my .org files live
 
 # load alias' if exist
 if [ -f ~/.bash_aliases ]; then

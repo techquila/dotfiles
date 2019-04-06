@@ -137,7 +137,7 @@ set $ws10 "10: comms"
 
 # switch to workspace
 bindsym Mod4+1 workspace $ws1
-bindsym Mod4+2 workspace $ws2, layout stacking
+bindsym Mod4+2 workspace $ws2,
 bindsym Mod4+3 workspace $ws3
 bindsym Mod4+4 workspace $ws4, layout stacking
 bindsym Mod4+5 workspace $ws5
@@ -230,6 +230,7 @@ gaps outer 0
 assign [class="^Gnome-terminal$"] → $ws1 
 assign [class="^Emacs$"] → $ws2
 assign [class="^Blueman-manager$"] → $ws3
+assign [class="^KeePassXC"] → $ws3
 assign [class="^Nautilus$"] → $ws3
 assign [class="^Firefox$"] → $ws4
 assign [class="^Gnome-boxes$"] → $ws5
@@ -243,8 +244,9 @@ assign [class="^Thunderbird$"] → $ws10
 assign [class="^Hexchat$"] → $ws10
 
 ########## auto launch ##########
+exec keepassxc
 exec --no-startup-id gnome-terminal
-exec emacs
+exec emacsclient --create-frame --alternate-editor=""
 exec nautilus
 exec $HOME/.nvm/versions/node/v10.15.2/bin/google-music-electron # investigate why no worky
 exec hexchat
@@ -258,7 +260,7 @@ bindsym mod4+o mode "$mode_launcher"
 
 mode "$mode_launcher" {
 
-    bindsym e exec emacs
+    bindsym e exec emacsclient --create-frame --alternate-editor=""
     bindsym f exec firefox
     bindsym c exec hexchat
     bindsym g exec gimp
