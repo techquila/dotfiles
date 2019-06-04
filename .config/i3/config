@@ -134,7 +134,6 @@ set $ws8 "8: graphics"
 set $ws9 "9: download"
 set $ws10 "10: comms"
 
-
 # switch to workspace
 bindsym Mod4+1 workspace $ws1
 bindsym Mod4+2 workspace $ws2,
@@ -200,7 +199,7 @@ bar {
             background #404552
 
             focused_workspace #3685e2 #3685e2 #fafafa
-            active_workspace #00b7ff #00b7ff #fafafa
+            active_workspace #00bfff #00bfff #fafafa
             inactive_workspace #666666 #666666 #fafafa
             urgent_workspace #ff8c00 #ff8c00 #fafafa
         }
@@ -223,7 +222,7 @@ for_window [title="Preferences$"] floating enable
 
 smart_borders no_gaps
 smart_gaps on
-gaps inner 10
+gaps inner 6
 gaps outer 0
 
 ########## window assignment ##########
@@ -233,6 +232,8 @@ assign [class="^Blueman-manager$"] → $ws3
 assign [class="^KeePassXC"] → $ws3
 assign [class="^Nautilus$"] → $ws3
 assign [class="^Firefox$"] → $ws4
+assign [class="^Brave-browser$"] → $ws4
+assign [class="^Google-chrome$"] → $ws4
 assign [class="^Gnome-boxes$"] → $ws5
 assign [class="^Google-music$"] → $ws6
 assign [class="^Vlc$"] → $ws6
@@ -240,6 +241,7 @@ assign [class="^Darktable$"] → $ws8
 assign [class="^Gimp$"] → $ws8
 assign [class="^Inkscape$"] → $ws8
 assign [class="^qBittorrent$"] → $ws9
+assign [class="^Signal$"] → $ws10
 assign [class="^Thunderbird$"] → $ws10
 assign [class="^Hexchat$"] → $ws10
 
@@ -248,9 +250,10 @@ exec keepassxc
 exec --no-startup-id gnome-terminal
 exec emacs --daemon
 exec nautilus
+exec dropbox start 
+exec signal-desktop
 exec hexchat
 exec thunderbird
-
 
 # Press $mod+o followed by either f, t, Escape or Return to launch firefox,
 # thunderbird or return to the defauLt Mode, respectively.
