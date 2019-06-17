@@ -244,6 +244,7 @@ assign [class="^qBittorrent$"] → $ws9
 assign [class="^Signal$"] → $ws10
 assign [class="^Thunderbird$"] → $ws10
 assign [class="^Hexchat$"] → $ws10
+assign [class="^Discord$"] → $ws10
 
 ########## auto launch ##########
 exec keepassxc
@@ -251,7 +252,8 @@ exec --no-startup-id gnome-terminal
 exec emacs --daemon
 exec nautilus
 exec dropbox start 
-exec signal-desktop
+exec discord
+Exec signal-desktop
 exec hexchat
 exec thunderbird
 
