@@ -197,7 +197,6 @@ bar {
 
         colors {
             background #404552
-
             focused_workspace #3685e2 #3685e2 #fafafa
             active_workspace #00bfff #00bfff #fafafa
             inactive_workspace #666666 #666666 #fafafa
@@ -247,13 +246,13 @@ assign [class="^Hexchat$"] → $ws10
 assign [class="^Discord$"] → $ws10
 
 ########## auto launch ##########
+exec dropbox start 
 exec keepassxc
 exec --no-startup-id gnome-terminal
 exec emacs --daemon
 exec nautilus
-exec dropbox start 
-exec discord
-Exec signal-desktop
+exec flatpak run us.zoom.Zoom/x86_64/stable
+exec signal-desktop
 exec hexchat
 exec thunderbird
 
@@ -263,14 +262,11 @@ set $mode_launcher Launch: [b]rowser [c]hat [e]ditor [m]ail [s]earch [t]unes
 bindsym mod4+o mode "$mode_launcher"
 
 mode "$mode_launcher" {
-
     bindsym b exec firefox
     bindsym c exec hexchat
     bindsym e exec emacsclient --create-frame --alternate-editor=""
     bindsym m exec thunderbird
-#    bindsym s exec 
-    bindsym t exec rhythmbox
-
+    bindsym t exec spotify
     bindsym Escape mode "default"
     bindsym Return mode "default"
 }
