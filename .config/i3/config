@@ -225,9 +225,9 @@ gaps inner 7
 gaps outer 0
 
 ########## window assignment ##########
-assign [class="^Firefox$"] → $ws1
 assign [class="^Brave-browser$"] → $ws2
-assign [class="^Google-chrome$"] → $ws3
+assign [class="^Google-chrome$"] → $ws2
+assign [class="^Firefox$"] → $ws3
 assign [class="^Thunderbird$"] → $ws4
 assign [class="^discord$"] → $ws4
 assign [class="^Hexchat$"] → $ws4
