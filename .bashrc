@@ -40,9 +40,9 @@ ssh-add -l | grep "The agent has no identities" && ssh-add
 # ========================================
 
 # emacs as default. emacs is life.
-export ALTERNATE_EDITOR=""
+export ALTERNATE_EDITOR="emacs"
 export EDITOR="emacsclient -t"             # $EDITOR opens in terminal
-export VISUAL="emacsclient -c -a emacs"    # $VISUAL opens in GUI mode
+export VISUAL="emacsclient -a '' -c"       # $VISUAL opens in GUI mode
 export ORG_HOME="$HOME/Dropbox/org"        # where my .org files live
 
 # load alias' if exist
@@ -87,9 +87,6 @@ VIRTUALENVWRAPPER_PYTHON='/usr/bin/python3'
 export WORKON_HOME="$HOME/.virtualenvs"
 export PROJECT_HOME=$GITDIR
 
-# Use virtualenvwrapper
-source /usr/bin/virtualenvwrapper.sh
-
 # Powerline - (https://github.com/powerline/powerline)
 # (https://getsol.us/articles/software/powerline-shell-prompt/en/)
 # ========================================
@@ -100,3 +97,6 @@ source /usr/lib/python3.6/site-packages/powerline/bindings/bash/powerline.sh
 
 
 # end ~/.bashrc
+
+# The next line updates PATH for Netlify's Git Credential Helper.
+if [ -f '/home/techquila/.netlify/helper/path.bash.inc' ]; then source '/home/techquila/.netlify/helper/path.bash.inc'; fi
