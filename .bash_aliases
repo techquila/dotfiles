@@ -46,6 +46,20 @@ alias edit_i3status="$EDITOR --debug-init ~/.config/i3/i3status.conf"
 alias edit_irc="$EDITOR --debug-init ~/.emacs.d/erc-config.org"
 alias edit_lxc="$EDITOR --debug-init ~/lxc/default.conf"
 
+# DOCKER
+# =====================================================================
+alias dcu="docker-compose up"
+alias dcr="docker-compose run"
+alias dce="docker-compose exec"
+
+
+# Ansible
+# =====================================================================
+
+# Create directory structure
+alias ansible_skel="mkdir -p ./{production,staging,group_vars/{group1,group2},library,filter_plugins,roles/{common/{default,files,handlers,meta,tasks,templates,vars},webtier,monitoring}}"
+
+
 # GIT
 # =====================================================================
 
@@ -70,49 +84,6 @@ alias dig="dig +nocmd any +multiline +noall +answer"
 # because we want to reduce lag by compressing, and NO forwarding x11
 alias ssh="ssh -Cx"
 
-# Ansible
-# =====================================================================
-
-# Create directory structure
-alias ansible_skel="mkdir -p ./{production,staging,group_vars/{group1,group2},library,filter_plugins,roles/{common/{default,files,handlers,meta,tasks,templates,vars},webtier,monitoring}}"
-
-# Git
-# =====================================================================
-function clone() {
-GITUSER=$1
-GITREPO=$2
-    git clone git@github.com:"$GITUSER"/"$GITREPO" ~/code/src/github.com/"$GITUSER"/"$GITREPO" && cd ~/code/src/github.com/"$GITUSER"/"$GITREPO"
-}
-
-    function clone {
-
-        if [ $# -eq 0 ]; then
-            echo "Please enter repo name or full url:";
-            read repo;
-            clone $repo;
-        elif [[ $1 == --help ]] || [[ $1 == --h ]] || [[ $1 == --? ]]; then
-            echo "This will clone a git repo.";
-            echo "";
-            echo "Option 1: You can just provide the name, eg:";
-            echo "$ clone membership";
-            echo "This will do: git clone https://github.com/techquila/bamgo.git";
-            echo "";
-            echo "Option 2: Provide the full URL";
-            echo "$ clone https://github.com/facebook/react.git";
-            echo "This will do: git clone https://github.com/facebook/react.git";
-        else    
-            if [[ $1 == https://* ]] || [[ $1 == git://* ]] || [[ $1 == ssh://* ]] ; then
-                URL=$1;
-            else
-                URL='https://github.com/techquila/'$1'.git';
-            fi    
-
-            echo git clone "$URL";
-            git clone "$URL";
-        fi
-    }
-
-    export -f clone
 
 # Miscellaneous helpers
 # =====================================================================
