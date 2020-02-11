@@ -24,6 +24,12 @@ font pango:Clear Sans 10
 exec --no-startup-id nm-applet
 exec --no-startup-id /usr/lib64/polkit-gnome/polkit-gnome-authentication-agent-1
 exec --no-startup-id blueman-applet
+exec xrandr  --output eDP --primary --mode 1366x768 --output HDMI-A-0 --mode 1360x768 --left-of eDP
+exec dropbox start 
+exec keepassxc
+exec --no-startup-id gnome-terminal
+exec emacs --daemon
+exec --no-startup-id nautilus
 
 ########## Keybindings ##########
 bindsym Mod1+Control+l exec i3lock-fancy -gpf Roboto-Bold 
@@ -43,7 +49,7 @@ bindsym XF86AudioPrev exec playerctl previous
 bindsym XF86AudioNext exec playerctl next
 
 ### Other ###
-bindsym Print exec scrot '%Y-%m-%d-%s_$wx$h_scrot.png' -e 'mv $f ~/Pictures/Screens/'
+bindsym Print exec scrot '%Y-%m-%d-%s_$wx$h_scrot.png' -e 'mv $f ~/Media/Photos/Screens/'
 
 # Take a screenshot upon pressing $mod+x (select an area)
 bindsym --release mod4+x exec --no-startup-id import /tmp/latest-screenshot.png
@@ -123,7 +129,7 @@ bindsym Mod4+minus scratchpad show
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
-set $ws1 "1"
+set $ws1 "1" 
 set $ws2 "2"
 set $ws3 "3"
 set $ws4 "4"
@@ -134,17 +140,31 @@ set $ws8 "8"
 set $ws9 "9"
 set $ws10 "10"
 
+# set monitors
+workspace $ws1 output primary
+workspace $ws2 output HDMI-A-0
+workspace $ws3 output HDMI-A-0
+workspace $ws4 output primary
+workspace $ws5 output HDMI-A-0
+workspace $ws6 output primary
+workspace $ws7 output primary
+workspace $ws8 output HDMI-A-0
+workspace $ws9 output primary
+workspace $ws10 output primary
+
+bindsym Mod4+Ctrl+Shift+Left move container to output HDMI-A-0
+
 # switch to workspace
 bindsym Mod4+1 workspace $ws1
-bindsym Mod4+2 workspace $ws2, layout stacking
-bindsym Mod4+3 workspace $ws3, layout stacking
-bindsym Mod4+4 workspace $ws4, layout stacking
+bindsym Mod4+2 workspace $ws2 layout stacking
+bindsym Mod4+3 workspace $ws3 layout stacking
+bindsym Mod4+4 workspace $ws4 layout stacking
 bindsym Mod4+5 workspace $ws5
 bindsym Mod4+6 workspace $ws6
 bindsym Mod4+7 workspace $ws7
-bindsym Mod4+8 workspace $ws8, layout stacking
+bindsym Mod4+8 workspace $ws8 layout stacking
 bindsym Mod4+9 workspace $ws9 
-bindsym Mod4+0 workspace $ws10, layout stacking
+bindsym Mod4+0 workspace $ws10 layout stacking
 
 # move focused container to workspace
 bindsym Mod4+Shift+1 move container to workspace $ws1
@@ -225,6 +245,7 @@ gaps inner 7
 gaps outer 0
 
 ########## window assignment ##########
+assign [class="^KeePassXC$"] → $ws1
 assign [class="^Brave-browser$"] → $ws2
 assign [class="^Google-chrome$"] → $ws2
 assign [class="^Firefox$"] → $ws3
@@ -244,20 +265,8 @@ assign [class="^Inkscape$"] → $ws8
 assign [class="^Emacs$"] → $ws9
 assign [class="^Gnome-terminal$"] → $ws10 
 assign [class="^Blueman-manager$"] → $ws10
-assign [class="^KeePassXC$"] → $ws10
 assign [class="^Nautilus$"] → $ws10
 
-########## auto launch ##########
-exec dropbox start 
-exec keepassxc
-exec --no-startup-id gnome-terminal
-exec emacs --daemon
-exec --no-startup-id nautilus
-exec flatpak run us.zoom.Zoom/x86_64/stable
-exec signal-desktop
-exec hexchat
-exec thunderbird
-exec discord
 
 # Press $mod+o followed by either f, t, Escape or Return to launch firefox,
 # thunderbird or return to the defauLt Mode, respectively.
