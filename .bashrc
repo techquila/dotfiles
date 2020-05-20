@@ -53,33 +53,36 @@ fi
 # Paths
 # ========================================
 
-# where your bin?
+## where your bin?
 if [ -s "$HOME/bin/" ]; then
     export PATH=$PATH:$HOME/bin
 fi
 
-# path to source directories
+## path to source directories
 export SRCPATH="$HOME/code/src"
 
-# path to bitbucket
+## path to bitbucket
 export BITPATH="$SRCPATH/bitbucket.com/techquila"
 
-# path to github
+## path to github
 export GITPATH="$SRCPATH/github.com/techquila"
 
-# path to dotfiles
+## path to dotfiles
 export DOTPATH="$GITPATH/dotfiles"
 
-# path to golang
+## path to golang
 export GOPATH="$HOME/go"
 export PATH=$PATH:$GOPATH:$GOPATH/bin
 
-# node version manager
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+# Bash Completion
+# ========================================
+if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
+    . /etc/bash_completion
+fi
 
-# python
+# Python
+# ========================================
+
 ## ensure new python projects use python3
 VIRTUALENVWRAPPER_PYTHON='/usr/bin/python3'
 
@@ -87,16 +90,31 @@ VIRTUALENVWRAPPER_PYTHON='/usr/bin/python3'
 export WORKON_HOME="$HOME/.virtualenvs"
 export PROJECT_HOME=$GITDIR
 
+# Node
+# ========================================
+
+# node version manager
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+
 # Powerline - (https://github.com/powerline/powerline)
 # (https://getsol.us/articles/software/powerline-shell-prompt/en/)
 # ========================================
 powerline-daemon -q
 POWERLINE_BASH_CONTINUATION=1
 POWERLINE_BASH_SELECT=1
-source /usr/lib/python3.7/site-packages/powerline/bindings/bash/powerline.sh
 
+if [ -f /usr/share/powerline/bindings/bash/powerline.sh ]; then
+source /usr/share/powerline/bindings/bash/powerline.sh
+fi
 
-# end ~/.bashrc
+# Netlify
+# ========================================
 
 # The next line updates PATH for Netlify's Git Credential Helper.
 if [ -f '/home/techquila/.netlify/helper/path.bash.inc' ]; then source '/home/techquila/.netlify/helper/path.bash.inc'; fi
+
+# end ~/.bashrc
+
