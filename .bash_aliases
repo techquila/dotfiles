@@ -4,7 +4,7 @@
 # =====================================================================
 
 ## prompt before every removal.  Annoying but you're a dickhead sometimes.
-alias rm="rm -i" 
+alias rm="rm -i"
 
 # Easier navigation of directories
 # =====================================================================
@@ -34,24 +34,17 @@ alias fs="stat -f \"%z bytes\""
 ## Find disk hogs in pwd
 alias ducks='du -cks * | sort -rn | head'
 
-# Quick edit files
-# =====================================================================
-
-alias edit_aliases="$EDITOR --debug-init ~/.bash_aliases"
-alias edit_hosts='sudo $EDITOR --debug-init /etc/hosts'
-alias edit_bashrc="$EDITOR --debug-init ~/.bashrc"
-alias edit_emacs="$EDITOR --debug-init ~/.emacs.d/sod.org"
-alias edit_i3="$EDITOR --debug-init ~/.config/i3/config"
-alias edit_i3status="$EDITOR --debug-init ~/.config/i3/i3status.conf"
-alias edit_irc="$EDITOR --debug-init ~/.emacs.d/erc-config.org"
-alias edit_lxc="$EDITOR --debug-init ~/lxc/default.conf"
 
 # DOCKER
 # =====================================================================
-alias dcu="docker-compose up"
-alias dcr="docker-compose run"
-alias dce="docker-compose exec"
+alias dcl="sudo docker container list"       ## list running containers
+alias dcp="sudo docker container prune"      ## rm all stopped containers
 
+alias dcb="sudo docker-compose build"        ## new image build context
+alias dcd="sudo docker-compose down"         ## graceful shutdown
+alias dce="sudo docker-compose exec"         ## exec shell command in container
+alias dcr="sudo docker-compose run"          ## run image in container
+alias dcu="sudo docker-compose up"           ## buckle in cowboy!
 
 # Ansible
 # =====================================================================
@@ -79,6 +72,10 @@ alias ips="ifconfig -a | perl -nle'/(\d+\.\d+\.\d+\.\d+)/ && print $1'"
 # All the dig info
 alias dig="dig +nocmd any +multiline +noall +answer"
 
+# Node
+
+
+
 # SSH
 # =====================================================================
 # because we want to reduce lag by compressing, and NO forwarding x11
@@ -91,3 +88,4 @@ alias ssh="ssh -Cx"
 ## Generate random password with pwgen
 alias pwgen="pwgen -c -n -s -y 16 -N 1"
 
+alias python="python3"
