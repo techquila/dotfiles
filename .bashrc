@@ -13,14 +13,14 @@ shopt -q -s checkwinsize
 # Don’t clear the screen after quitting a manual page
 export MANPAGER="less -X"
 
-# GPG 
+# GPG
 # ========================================
 
 ## export tty for gpg agent
 GPG_TTY=$(tty)
 export GPG_TTY
 
-# SSH 
+# SSH
 # ========================================
 
 ## add key to ssh-agent
@@ -59,13 +59,13 @@ if [ -s "$HOME/bin/" ]; then
 fi
 
 ## path to source directories
-export SRCPATH="$HOME/code/src"
+export SRCPATH="$HOME/src"
 
 ## path to bitbucket
 export BITPATH="$SRCPATH/bitbucket.com/techquila"
 
 ## path to github
-export GITPATH="$SRCPATH/github.com/techquila"
+export GITPATH="$SRCPATH/Github.com/techquila"
 
 ## path to dotfiles
 export DOTPATH="$GITPATH/dotfiles"
@@ -118,4 +118,3 @@ export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || pr
 if [ -f '/home/techquila/.netlify/helper/path.bash.inc' ]; then source '/home/techquila/.netlify/helper/path.bash.inc'; fi
 
 # end ~/.bashrc
-
