@@ -103,13 +103,13 @@ export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || pr
 # Powerline - (https://github.com/powerline/powerline)
 # (https://getsol.us/articles/software/powerline-shell-prompt/en/)
 # ========================================
-powerline-daemon -q
-POWERLINE_BASH_CONTINUATION=1
-POWERLINE_BASH_SELECT=1
+# powerline-daemon -q
+# POWERLINE_BASH_CONTINUATION=1
+# POWERLINE_BASH_SELECT=1
 
-if [ -f /usr/share/powerline/bindings/bash/powerline.sh ]; then
-source /usr/share/powerline/bindings/bash/powerline.sh
-fi
+# if [ -f /usr/share/powerline/bindings/bash/powerline.sh ]; then
+# source /usr/share/powerline/bindings/bash/powerline.sh
+# fi
 
 # Netlify
 # ========================================

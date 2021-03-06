@@ -34,6 +34,10 @@ alias fs="stat -f \"%z bytes\""
 ## Find disk hogs in pwd
 alias ducks='du -cks * | sort -rn | head'
 
+# Backups
+# =====================================================================
+alias backup-full="duplicity --encrypt-key D59FA2C2562E4E82 --progress --s3-use-new-style --exclude /proc --exclude /sys --exclude /tmp / s3://s3.ap-southeast-2.amazonaws.com/zeta-restore"
+alias backup-incr="duplicity incr --encrypt-key D59FA2C2562E4E82 --progress --s3-use-new-style --exclude /proc --exclude /sys --exclude /tmp / s3://s3.ap-southeast-2.amazonaws.com/zeta-restore"
 
 # DOCKER
 # =====================================================================
