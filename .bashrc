@@ -23,7 +23,7 @@ export GPG_TTY
 # SSH
 # ========================================
 
-## add key to ssh-agent
+# ## add key to ssh-agent
 if [ ! -S ~/.ssh/ssh_auth_sock ]; then
     eval "$(ssh-agent)"
     ln -sf "$SSH_AUTH_SOCK" ~/.ssh/ssh_auth_sock
@@ -39,13 +39,23 @@ ssh-add -l | grep "The agent has no identities" && ssh-add
 # Conveniences
 # ========================================
 
-# emacs as default. emacs is life.
-export ALTERNATE_EDITOR="emacs"
-export EDITOR="emacsclient -t"             # $EDITOR opens in terminal
-export VISUAL="emacsclient -a '' -c"       # $VISUAL opens in GUI mode
-export ORG_HOME="$HOME/Dropbox/org"        # where my .org files live
+# Emacs is Life!
+# ========================================
 
-# load alias' if exist
+## Emacs Server:
+## first let's use systemd to start a server process.
+## (A systemd service descriptor, named "emacs.service", should be present in "~/.config/systemd/user directory")
+systemctl enable --user emacs
+systemctl start --user emacs
+
+## now let's set some environment variables that ensure we use client processes that
+## connect to our server instance when calling our editor of choice
+export EDITOR="emacsclient -s emacs_server0 -t $HOME/src/Dropbox/my/study/studycentral.org"  # $EDITOR opens in terminal
+export VISUAL="emacsclient -s emacs_server0 -c $HOME/src/Dropbox/my/study/studycentral.org"  # $VISUAL opens in GUI mode
+export ALTERNATE_EDITOR="emacs"
+
+# Bash aliases
+# ========================================
 if [ -f ~/.bash_aliases ]; then
     source ~/.bash_aliases
 fi
