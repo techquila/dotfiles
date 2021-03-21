@@ -63,7 +63,7 @@ fi
 # Paths
 # ========================================
 
-## where your bin?
+## where you bin?
 if [ -s "$HOME/bin/" ]; then
     export PATH=$PATH:$HOME/bin
 fi
@@ -72,10 +72,10 @@ fi
 export SRCPATH="$HOME/src"
 
 ## path to bitbucket
-export BITPATH="$SRCPATH/bitbucket.com/techquila"
+export BITPATH="$SRCPATH/bitbucket/techquila"
 
 ## path to github
-export GITPATH="$SRCPATH/Github.com/techquila"
+export GITPATH="$SRCPATH/Github/techquila"
 
 ## path to dotfiles
 export DOTPATH="$GITPATH/dotfiles"
